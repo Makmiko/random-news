@@ -15,8 +15,8 @@ function getUsers(n = 20) {
   return users;
 }
 
-mock.onGet('/users').reply(200, {
-  users: getUsers(),
+mock.onGet('/users').reply(() => {
+  return [200, { users: getUsers() }];
 });
 
 export default async function fetchUsers() {

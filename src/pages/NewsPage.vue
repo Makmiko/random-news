@@ -3,15 +3,41 @@
     class="news-page"
     fluid
   >
-    News
+    <NewsTable :news="news" :news-status="newsStatus" />
   </v-container>
 </template>
 
 <script>
+  import fetchNews from '../xhr/fetchNews';
   import Header from '../layout/Header';
+  import NewsTable from '../layout/NewsTable';
+
   export default {
     name: 'NewsPage',
-    components: { Header }
+    components: { NewsTable, Header },
+    data() {
+      return {
+        news: [],
+        newsStatus: '',
+      }
+    },
+    mounted() {
+      this.fetchNews();
+    },
+    methods: {
+      async fetchNews() {
+        this.newsStatus = 'loading';
+        try {
+          const news = await fetchNews();
+          this.newsStatus = 'success';
+          this.news = news;
+          return news;
+        } catch (e) {
+          this.newsStatus = 'error';
+          return [];
+        }
+      },
+    },
   }
 </script>
 
