@@ -4,23 +4,24 @@
     :color="$vuetify.theme.themes.light.primary"
     dark
   >
-    <div class="d-flex align-center">
+    <div class="logo-container">
       <v-img
-        alt="Vuetify Logo"
-        class="shrink mr-2"
+        alt="Dogo-logo"
+        class="mr-2"
         contain
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+        src="../assets/no-poster.jpg"
         transition="scale-transition"
-        width="40"
+        height="64"
+        width="59"
       />
 
       <v-img
-        alt="Vuetify Name"
+        alt="Webmasters"
         class="shrink mt-1 hidden-sm-and-down"
         contain
         min-width="100"
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-        width="100"
+        src="../assets/webmasters.png"
+        width="400"
       />
     </div>
 
@@ -53,5 +54,10 @@
 </script>
 
 <style scoped>
-
+.logo-container {
+  display: flex;
+  align-items: center;
+  overflow-y: hidden;
+  height: 64px;
+}
 </style>

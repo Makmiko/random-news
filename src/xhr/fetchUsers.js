@@ -9,14 +9,18 @@ function getUsers(n = 20) {
         id: faker.random.uuid(),
         name: faker.name.findName(),
         email: faker.internet.email(),
-        regDate: faker.date.recent(),
+        regDate: faker.date.past(),
       });
   }
   return users;
 }
 
 mock.onGet('/users').reply(() => {
-  return [200, { users: getUsers() }];
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve([200, { users: getUsers(200) }]);
+    }, 200);
+  });
 });
 
 export default async function fetchUsers() {

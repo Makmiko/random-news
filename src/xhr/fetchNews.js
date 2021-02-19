@@ -19,8 +19,8 @@ function getNews(n = 20) {
 mock.onGet('/news').reply(() => {
   return new Promise((resolve => {
     setTimeout(() => {
-      resolve([200, { news: getNews() }]);
-    }, 2000);
+      resolve([200, { news: getNews(200) }]);
+    }, 800);
   }));
 });
 
